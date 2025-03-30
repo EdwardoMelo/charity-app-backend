@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon serve.js --watch *.js --ignore node_modules/** --ext js,json"
+    "dev": "nodemon serve.js --watch *.js --ignore node_modules/** --ext js,json",
+    "postinstall": "prisma generate"
   },
   "author": "",
   "license": "ISC",
