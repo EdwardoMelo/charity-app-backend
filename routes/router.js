@@ -12,6 +12,9 @@ const ScheduleController = require('../controllers/ScheduleController');
 const { findByInstitutionUserId } = require('../services/NeedService');
 
 // Rotas para Necessidades (needs)
+router.get('/', (req, res ) =>  {
+    res.status(200).send({message: 'Api working'});
+})
 router.post('/needs', NeedController.create);
 router.get('/needs', NeedController.findAll);
 router.get('/needs/:id', NeedController.findById);
