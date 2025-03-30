@@ -1,0 +1,375 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-03-27T12:00:00.000Z",
+  "__export_source": "insomnia.importers",
+  "resources": [
+    {
+      "_id": "wrk_1",
+      "_type": "workspace",
+      "name": "API Tests",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_1",
+      "_type": "environment",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:3002"
+      },
+      "parentId": "wrk_1"
+    },
+    {
+      "_id": "req_folder_users",
+      "_type": "request_group",
+      "name": "Users",
+      "parentId": "wrk_1"
+    },
+    {
+      "_id": "req_folder_needs",
+      "_type": "request_group",
+      "name": "Needs",
+      "parentId": "wrk_1"
+    },
+    {
+      "_id": "req_folder_donations",
+      "_type": "request_group",
+      "name": "Donations",
+      "parentId": "wrk_1"
+    },
+    {
+      "_id": "req_folder_stories",
+      "_type": "request_group",
+      "name": "Stories",
+      "parentId": "wrk_1"
+    },
+    {
+      "_id": "req_folder_impacts",
+      "_type": "request_group",
+      "name": "Impacts",
+      "parentId": "wrk_1"
+    },
+    {
+      "_id": "req_folder_extras",
+      "_type": "request_group",
+      "name": "Extras",
+      "parentId": "wrk_1"
+    },
+    {
+      "_id": "req_users_post",
+      "_type": "request",
+      "name": "Create User",
+      "url": "{{ base_url }}/users",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"id_tipo_usuario\": 1, \"nome\": \"Novo Usuário\", \"email\": \"novo@usuario.com\", \"senha\": \"senha123\", \"image\": \"https://example.com/image.jpg\"}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parentId": "req_folder_users"
+    },
+    {
+      "_id": "req_users_get_all",
+      "_type": "request",
+      "name": "Get All Users",
+      "url": "{{ base_url }}/users",
+      "method": "GET",
+      "parentId": "req_folder_users"
+    },
+    {
+      "_id": "req_users_get_id",
+      "_type": "request",
+      "name": "Get User by ID",
+      "url": "{{ base_url }}/users/1",
+      "method": "GET",
+      "parentId": "req_folder_users"
+    },
+    {
+      "_id": "req_users_put",
+      "_type": "request",
+      "name": "Update User",
+      "url": "{{ base_url }}/users/1",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"nome\": \"Usuário Atualizado\", \"email\": \"atualizado@usuario.com\"}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parentId": "req_folder_users"
+    },
+    {
+      "_id": "req_users_delete",
+      "_type": "request",
+      "name": "Delete User",
+      "url": "{{ base_url }}/users/1",
+      "method": "DELETE",
+      "parentId": "req_folder_users"
+    },
+    {
+      "_id": "req_needs_post",
+      "_type": "request",
+      "name": "Create Need",
+      "url": "{{ base_url }}/needs",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"id_usuario\": 1, \"item\": \"Roupas de inverno\", \"quantidade\": 50, \"ativo\": true, \"image\": \"https://example.com/need.jpg\"}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parentId": "req_folder_needs"
+    },
+    {
+      "_id": "req_needs_get_all",
+      "_type": "request",
+      "name": "Get All Needs",
+      "url": "{{ base_url }}/needs",
+      "method": "GET",
+      "parentId": "req_folder_needs"
+    },
+    {
+      "_id": "req_needs_get_id",
+      "_type": "request",
+      "name": "Get Need by ID",
+      "url": "{{ base_url }}/needs/1",
+      "method": "GET",
+      "parentId": "req_folder_needs"
+    },
+    {
+      "_id": "req_needs_put",
+      "_type": "request",
+      "name": "Update Need",
+      "url": "{{ base_url }}/needs/1",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"item\": \"Roupas de verão\", \"quantidade\": 30, \"ativo\": false}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parentId": "req_folder_needs"
+    },
+    {
+      "_id": "req_needs_delete",
+      "_type": "request",
+      "name": "Delete Need",
+      "url": "{{ base_url }}/needs/1",
+      "method": "DELETE",
+      "parentId": "req_folder_needs"
+    },
+    {
+      "_id": "req_donations_post",
+      "_type": "request",
+      "name": "Create Donation",
+      "url": "{{ base_url }}/donations",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"id_doador\": 3, \"id_instituicao\": 1, \"valor\": 150, \"data_doacao\": \"2025-02-01T10:00:00Z\", \"comprovante_url\": \"https://example.com/comprovante.pdf\", \"image\": \"https://example.com/donation.jpg\"}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parentId": "req_folder_donations"
+    },
+    {
+      "_id": "req_donations_get_all",
+      "_type": "request",
+      "name": "Get All Donations",
+      "url": "{{ base_url }}/donations",
+      "method": "GET",
+      "parentId": "req_folder_donations"
+    },
+    {
+      "_id": "req_donations_get_id",
+      "_type": "request",
+      "name": "Get Donation by ID",
+      "url": "{{ base_url }}/donations/1",
+      "method": "GET",
+      "parentId": "req_folder_donations"
+    },
+    {
+      "_id": "req_donations_put",
+      "_type": "request",
+      "name": "Update Donation",
+      "url": "{{ base_url }}/donations/1",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"valor\": 200, \"comprovante_url\": \"https://example.com/comprovante-atualizado.pdf\"}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parentId": "req_folder_donations"
+    },
+    {
+      "_id": "req_donations_delete",
+      "_type": "request",
+      "name": "Delete Donation",
+      "url": "{{ base_url }}/donations/1",
+      "method": "DELETE",
+      "parentId": "req_folder_donations"
+    },
+    {
+      "_id": "req_stories_post",
+      "_type": "request",
+      "name": "Create Story",
+      "url": "{{ base_url }}/stories",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"id_usuario\": 1, \"titulo\": \"Uma Nova Chance\", \"relato\": \"Graças às doações, ajudamos 10 crianças.\", \"image\": \"https://example.com/story.jpg\"}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parentId": "req_folder_stories"
+    },
+    {
+      "_id": "req_stories_get_all",
+      "_type": "request",
+      "name": "Get All Stories",
+      "url": "{{ base_url }}/stories",
+      "method": "GET",
+      "parentId": "req_folder_stories"
+    },
+    {
+      "_id": "req_stories_get_id",
+      "_type": "request",
+      "name": "Get Story by ID",
+      "url": "{{ base_url }}/stories/1",
+      "method": "GET",
+      "parentId": "req_folder_stories"
+    },
+    {
+      "_id": "req_stories_put",
+      "_type": "request",
+      "name": "Update Story",
+      "url": "{{ base_url }}/stories/1",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"titulo\": \"Uma Nova Chance Atualizada\", \"relato\": \"Agora ajudamos 20 crianças.\"}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parentId": "req_folder_stories"
+    },
+    {
+      "_id": "req_stories_delete",
+      "_type": "request",
+      "name": "Delete Story",
+      "url": "{{ base_url }}/stories/1",
+      "method": "DELETE",
+      "parentId": "req_folder_stories"
+    },
+    {
+      "_id": "req_impacts_post",
+      "_type": "request",
+      "name": "Create Impact",
+      "url": "{{ base_url }}/impacts",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"id_doador\": 3, \"id_instituicao\": 1, \"refeicoes_doadas\": 75, \"pessoas_ajudadas\": 30, \"image\": \"https://example.com/impact.jpg\", \"updated_at\": \"2025-02-10T10:00:00Z\"}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parentId": "req_folder_impacts"
+    },
+    {
+      "_id": "req_impacts_get_all",
+      "_type": "request",
+      "name": "Get All Impacts",
+      "url": "{{ base_url }}/impacts",
+      "method": "GET",
+      "parentId": "req_folder_impacts"
+    },
+    {
+      "_id": "req_impacts_get_id",
+      "_type": "request",
+      "name": "Get Impact by ID",
+      "url": "{{ base_url }}/impacts/1",
+      "method": "GET",
+      "parentId": "req_folder_impacts"
+    },
+    {
+      "_id": "req_impacts_put",
+      "_type": "request",
+      "name": "Update Impact",
+      "url": "{{ base_url }}/impacts/1",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"refeicoes_doadas\": 100, \"pessoas_ajudadas\": 40}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parentId": "req_folder_impacts"
+    },
+    {
+      "_id": "req_impacts_delete",
+      "_type": "request",
+      "name": "Delete Impact",
+      "url": "{{ base_url }}/impacts/1",
+      "method": "DELETE",
+      "parentId": "req_folder_impacts"
+    },
+    {
+      "_id": "req_extras_tipos_frete",
+      "_type": "request",
+      "name": "Get Tipos de Frete",
+      "url": "{{ base_url }}/tipos-frete",
+      "method": "GET",
+      "parentId": "req_folder_extras"
+    },
+    {
+      "_id": "req_extras_classificacoes_fiscais",
+      "_type": "request",
+      "name": "Get Classificações Fiscais",
+      "url": "{{ base_url }}/classificacoes-fiscais",
+      "method": "GET",
+      "parentId": "req_folder_extras"
+    }
+  ]
+}

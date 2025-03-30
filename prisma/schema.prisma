@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model agendamentos_voluntariado {
+  id                                                          Int       @id @default(autoincrement())
+  id_doador                                                   Int
+  id_instituicao                                              Int
+  atividade                                                   String
+  data_hora                                                   DateTime  @db.Timestamptz(6)
+  confirmado                                                  Boolean
+  image                                                       String?
+  created_at                                                  DateTime? @default(now()) @db.Timestamptz(6)
+  usuarios_agendamentos_voluntariado_id_doadorTousuarios      usuarios  @relation("agendamentos_voluntariado_id_doadorTousuarios", fields: [id_doador], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  usuarios_agendamentos_voluntariado_id_instituicaoTousuarios usuarios  @relation("agendamentos_voluntariado_id_instituicaoTousuarios", fields: [id_instituicao], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model doacoes {
+  id                                        Int      @id @default(autoincrement())
+  id_doador                                 Int
+  id_instituicao                            Int
+  valor                                     Decimal  @db.Decimal(10, 2)
+  data_doacao                               DateTime @db.Timestamptz(6)
+  comprovante_url                           String?
+  image                                     String?
+  usuarios_doacoes_id_doadorTousuarios      usuarios @relation("doacoes_id_doadorTousuarios", fields: [id_doador], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  usuarios_doacoes_id_instituicaoTousuarios usuarios @relation("doacoes_id_instituicaoTousuarios", fields: [id_instituicao], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model historias {
+  id         Int       @id @default(autoincrement())
+  id_usuario Int
+  titulo     String
+  relato     String
+  image      String?
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  usuarios   usuarios  @relation(fields: [id_usuario], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model impacto {
+  id                                        Int      @id @default(autoincrement())
+  id_doador                                 Int
+  id_instituicao                            Int
+  refeicoes_doadas                          Int
+  pessoas_ajudadas                          Int
+  image                                     String?
+  updated_at                                DateTime @db.Timestamptz(6)
+  usuarios_impacto_id_doadorTousuarios      usuarios @relation("impacto_id_doadorTousuarios", fields: [id_doador], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  usuarios_impacto_id_instituicaoTousuarios usuarios @relation("impacto_id_instituicaoTousuarios", fields: [id_instituicao], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model necessidades {
+  id                   Int                    @id @default(autoincrement())
+  id_usuario           Int
+  item                 String
+  quantidade           Int
+  ativo                Boolean
+  image                String?
+  created_at           DateTime?              @default(now()) @db.Timestamptz(6)
+  usuarios             usuarios               @relation(fields: [id_usuario], references: [id], onDelete: Cascade)
+  selecao_necessidades selecao_necessidades[]
+}
+
+model selecao_necessidades {
+  id             Int          @id @default(autoincrement())
+  id_necessidade Int
+  id_usuario     Int
+  data_selecao   DateTime     @db.Timestamptz(6)
+  image          String?
+  necessidades   necessidades @relation(fields: [id_necessidade], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  usuarios       usuarios     @relation(fields: [id_usuario], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model tipo_usuario {
+  id       Int        @id @default(autoincrement())
+  nome     String
+  usuarios usuarios[]
+}
+
+model usuarios {
+  id                                                                           Int                         @id @default(autoincrement())
+  id_tipo_usuario                                                              Int
+  cnpj                                                                         String?
+  nome                                                                         String
+  email                                                                        String                      @unique
+  senha                                                                        String
+  image                                                                        String?
+  created_at                                                                   DateTime?                   @default(now()) @db.Timestamptz(6)
+  sobre                                                                        String?
+  agendamentos_voluntariado_agendamentos_voluntariado_id_doadorTousuarios      agendamentos_voluntariado[] @relation("agendamentos_voluntariado_id_doadorTousuarios")
+  agendamentos_voluntariado_agendamentos_voluntariado_id_instituicaoTousuarios agendamentos_voluntariado[] @relation("agendamentos_voluntariado_id_instituicaoTousuarios")
+  doacoes_doacoes_id_doadorTousuarios                                          doacoes[]                   @relation("doacoes_id_doadorTousuarios")
+  doacoes_doacoes_id_instituicaoTousuarios                                     doacoes[]                   @relation("doacoes_id_instituicaoTousuarios")
+  historias                                                                    historias[]
+  impacto_impacto_id_doadorTousuarios                                          impacto[]                   @relation("impacto_id_doadorTousuarios")
+  impacto_impacto_id_instituicaoTousuarios                                     impacto[]                   @relation("impacto_id_instituicaoTousuarios")
+  necessidades                                                                 necessidades[]
+  selecao_necessidades                                                         selecao_necessidades[]
+  tipo_usuario                                                                 tipo_usuario                @relation(fields: [id_tipo_usuario], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
