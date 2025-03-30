@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const { disconnect } = require('./database');
-const router = require('./routes/router'); // Importar o router
+const { disconnect } = require('../database');
+const router = require('../routes/router'); // Importar o router
 const cors = require('cors');
 const app = express();
 app.use(express.json());
